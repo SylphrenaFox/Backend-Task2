@@ -44,15 +44,14 @@ async function removeNote(id) {
   console.log(chalk.red(`Note with id="${id}" has been removed.`));
 }
 
-async function editNote(id, newTitle) {
+async function editNote(noteData) {
   const notes = await getNotes();
-
-  const updatedNotes = notes.map((note) =>
-    note.id === id ? { ...note, title: newTitle } : note
-  );
-
-  await saveNotes(updatedNotes);
-  console.log(chalk.bgGreen(`Note with id="${id}" has been updated.`));
+  const index = notes.findIndex((note) => note.id === noteData.id);
+  if (index >= 0) {
+    notes[index] = { ...notes[index], ...noteData };
+    await saveNotes(notes);
+    console.log(chalk.bgGreen(`Note with id="${id}" has been updated.`));
+  }
 }
 
 module.exports = {
