@@ -39,22 +39,23 @@
             class="list-group-item d-flex justify-content-between align-items-center"
           >
             <span><%= notes[i].title %></span>
-
-            <button
-              class="btn btn-danger"
-              data-type="remove"
-              data-id="<%= notes[i].id %>"
-            >
-              ×
-            </button>
-            <button
-              class="btn btn-primary"
-              data-type="edit"
-              data-id="<%= notes[i].id %>"
-              data-title="<%= notes[i].title %>"
-            >
-              Edit
-            </button>
+            <div>
+              <button
+                class="btn btn-primary"
+                data-type="edit"
+                data-id="<%= notes[i].id %>"
+                data-title="<%= notes[i].title %>"
+              >
+                Редактировать
+              </button>
+              <button
+                class="btn btn-danger"
+                data-type="remove"
+                data-id="<%= notes[i].id %>"
+              >
+                &times;
+              </button>
+            </div>
           </li>
           <% } %>
         </ul>
